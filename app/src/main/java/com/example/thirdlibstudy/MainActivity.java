@@ -11,7 +11,6 @@ import com.example.butterknife_annotations.TestAnotation;
 import com.example.thirdlibstudy.butterknife.ButterknifeMainActivity;
 
 
-@TestAnotation
 public class MainActivity extends AppCompatActivity {
 
     Button btnButterKnife;
