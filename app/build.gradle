@@ -38,7 +38,5 @@ dependencies {
     api project(':butterknife')
     annotationProcessor  project(':butterknife-compiler')
 
-
-
     
 }
