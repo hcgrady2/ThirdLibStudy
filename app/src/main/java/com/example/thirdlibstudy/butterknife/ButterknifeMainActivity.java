@@ -22,7 +22,7 @@ public class ButterknifeMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_butter_knife_main);
         unbinder = ButterKnife.bind(this);
-        one.setText("apt SUCCESS!a ");
+        one.setText("auto service apt success!");
         //
 
     }

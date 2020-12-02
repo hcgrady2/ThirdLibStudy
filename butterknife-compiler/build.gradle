@@ -12,9 +12,6 @@ dependencies {
     implementation project(':butterknife-annotations')
     implementation files('libs/tools.jar')
     //
-
-
-
 }
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
