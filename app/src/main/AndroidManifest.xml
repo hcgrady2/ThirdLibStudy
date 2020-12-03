@@ -18,6 +18,8 @@
         </activity>
 
         <activity android:name=".butterknife.ButterknifeMainActivity"/>
+        <activity android:name=".eventbus.EventBusOneActivity"/>
+        <activity android:name=".eventbus.EventBusTwoActivity"/>
     </application>
 
 </manifest>

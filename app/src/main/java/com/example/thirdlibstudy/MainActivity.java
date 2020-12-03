@@ -9,11 +9,13 @@ import android.widget.Button;
 
 import com.example.butterknife_annotations.TestAnotation;
 import com.example.thirdlibstudy.butterknife.ButterknifeMainActivity;
+import com.example.thirdlibstudy.eventbus.EventBusOneActivity;
 
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnButterKnife;
+    Button btnEventBus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ButterknifeMainActivity.class));
             }
         });
+
+
+        btnEventBus = findViewById(R.id.btn_event_bus);
+        btnEventBus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, EventBusOneActivity.class));
+            }
+        });
+
     }
 
 }
