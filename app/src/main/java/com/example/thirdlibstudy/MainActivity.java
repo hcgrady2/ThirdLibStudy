@@ -10,12 +10,14 @@ import android.widget.Button;
 import com.example.butterknife_annotations.TestAnotation;
 import com.example.thirdlibstudy.butterknife.ButterknifeMainActivity;
 import com.example.thirdlibstudy.eventbus.EventBusOneActivity;
+import com.example.thirdlibstudy.glide.GlideMainActivity;
 
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnButterKnife;
     Button btnEventBus;
+    Button btnGlide;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        btnGlide = findViewById(R.id.btn_glide_main);
+        btnGlide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, GlideMainActivity.class));
+
+            }
+        });
     }
 
 }
