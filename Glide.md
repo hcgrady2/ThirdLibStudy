@@ -1,12 +1,127 @@
-### 一、glide 原理
-参考资料:
+### 一、使用
+参考资料：
+https://blog.yorek.xyz/android/3rd-library/glide1/
+
+
+#### 1、基础使用
++ 简单使用
+```
+Glide.with(this).load(URL).into(ivGlide)
+
+
+
+
+Glide.with(this)
+    .load(URL)
+    .placeholder(ColorDrawable(Color.GRAY))
+    .error(ColorDrawable(Color.RED))
+    .fallback(ColorDrawable(Color.CYAN))
+    .skipMemoryCache(true)
+    .diskCacheStrategy(DiskCacheStrategy.NONE)
+    .into(ivGlide)
+    
+    
+    
+
+```
+
++ with 的重载方法 @Glide
+```
+with(@NonNull Context context)
+with(@NonNull View view)
+with(@NonNull Activity activity)
+with(@NonNull FragmentActivity activity)
+with(@NonNull Fragment fragment)
+
+```
+
++ load 的重载方法 @RequestManager
+```
+
+load(@Nullable Bitmap bitmap)
+load(@Nullable Drawable drawable)
+load(@Nullable String string)
+load(@Nullable Uri uri)
+load(@Nullable File file)
+load(@RawRes @DrawableRes @Nullable Integer resourceId)
+load(@Nullable byte[] model)
+load(@Nullable Object model)
+
+```
+
++ RequestManager 中的控制方法
+```
+isPaused()
+pauseRequests()
+pauseAllRequests()
+pauseRequestsRecursive()
+resumeRequests()
+resumeRequestsRecursive()
+clear(@NonNull View view)
+clear(@Nullable final Target<?> target)
+```
+
++ RequestManager 中生命周期方法
+```
+onStart()
+onStop()
+onDestroy()
+```
+
++ RequestManager  其他方法
+```
+downloadOnly()
+download(@Nullable Object model)
+asBitmap()
+asGif()
+asDrawable()
+asFile()
+as(@NonNull Class<ResourceType> resourceClass)
+```
+
+#### 2、占位符
++ placeholder
++ error
++ fallback
+
+
+
+#### 3、其他问题
+占位符在主线程加载，变换不会应用给占位符。
+
+Glide 可以自动识别 git ,同时支持转化为图片，只现实第一帧
+```
+Glide.with(this)
+    .asBitmap()
+    .load(GIF_URL)
+    .apply(option)
+    .into(ivGlide)
+```
+
+
+指定图片大小
+```
+Glide.with(this)
+    .load(URL)
+    .apply(option)
+    .override(100)
+    .into(ivGlide)
+```
+
+
+
+### 二、glide 原理
 
 
 
 
 
 
-### 二、手写 glide
+
+
+
+
+### 三、手写 glide
 
 
 
@@ -58,6 +173,8 @@ run 方法中，也就是线程执行方法里面，当有需求时，线程不�
 ### 二、其他
 LinkedBlockingDeque
 
+
+ExecutorService
 
 
 
