@@ -28,6 +28,7 @@
         <activity android:name=".eventbus.EventBusTwoActivity"/>
         <activity android:name=".glide.GlideMainActivity"/>
         <activity android:name=".glide.GlideSecondActivity"/>
+        <activity android:name=".retrofit.RetrofitMainActivity"/>
     </application>
 
 </manifest>

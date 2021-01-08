@@ -13,6 +13,7 @@ import com.example.butterknife_annotations.TestAnotation;
 import com.example.thirdlibstudy.butterknife.ButterknifeMainActivity;
 import com.example.thirdlibstudy.eventbus.EventBusOneActivity;
 import com.example.thirdlibstudy.glide.GlideMainActivity;
+import com.example.thirdlibstudy.retrofit.RetrofitMainActivity;
 import com.hc.butterknife.ButterKnife;
 import com.hc.butterknife.Unbinder;
 import com.hc.myokhttp.Call;
@@ -37,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.btn_okhttp_demo)
     Button btnOkhttp;
+
+    @BindView(R.id.btn_retrofit_demo)
+    Button btnRetrofit;
+
 
     Unbinder unbinder;
 
@@ -76,6 +81,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        btnRetrofit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RetrofitMainActivity.class));
+
+            }
+        });
+
 
 
 
