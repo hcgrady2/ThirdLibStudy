@@ -1,18 +1,24 @@
 package com.example.thirdlibstudy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.butterknife_annotations.BindView;
 import com.example.butterknife_annotations.TestAnotation;
 import com.example.thirdlibstudy.butterknife.ButterknifeMainActivity;
 import com.example.thirdlibstudy.eventbus.EventBusOneActivity;
 import com.example.thirdlibstudy.glide.GlideMainActivity;
+import com.example.thirdlibstudy.okhttpdownload.DownloadCallback;
+import com.example.thirdlibstudy.okhttpdownload.DownloadFacade;
 import com.example.thirdlibstudy.retrofit.RetrofitMainActivity;
 import com.hc.butterknife.ButterKnife;
 import com.hc.butterknife.Unbinder;
@@ -25,6 +31,8 @@ import com.hc.myokhttp.Response;
 
 import java.io.File;
 import java.io.IOException;
+
+import static com.example.thirdlibstudy.Constants.apkUrl;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -41,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.btn_retrofit_demo)
     Button btnRetrofit;
+
+
+    @BindView(R.id.btn_okhttp_download)
+    Button btnMultiThreadDown;
 
 
     Unbinder unbinder;
@@ -157,7 +169,66 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        btnMultiThreadDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this,"start download....",Toast.LENGTH_SHORT).show();
+
+
+                // 有三个类需要用户去关注，后面我们有可能会自己去更新代码，用户就需要换调用方式
+                // 调用的方式 门面
+                DownloadFacade.getFacade().init(MainActivity.this);
+
+                DownloadFacade.getFacade()
+                        .startDownload(apkUrl, new DownloadCallback() {
+                            @Override
+                            public void onFailure(IOException e) {
+                                e.printStackTrace();
+                                Log.i(TAG, "onFailure: " + e.toString());
+                            }
+
+                            @Override
+                            public void onSucceed(File file) {
+                                Log.i(TAG, "onSucceed: ");
+                                btnMultiThreadDown.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(MainActivity.this,"download success !",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+                                //下载完成之后进行安装
+                                installFile(file);
+                            }
+                        });
+
+
+
+
+            }
+        });
+
     }
+
+    private void installFile(File  file) {
+        // 核心是下面几句代码
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        //判断是否是AndroidN以及更高的版本
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Uri contentUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".fileProvider", file );
+            intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
+        } else {
+            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+        startActivity(intent);
+    }
+
+
+
+
 
     @Override
     protected void onDestroy() {
