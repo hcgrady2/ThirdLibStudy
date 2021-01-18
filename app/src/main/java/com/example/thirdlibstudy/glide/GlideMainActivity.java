@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.glide.Glide;
+import com.example.glide.MyGlide;
 import com.example.glide.listener.RequestListener;
 import com.example.thirdlibstudy.R;
 
@@ -51,7 +51,7 @@ public class GlideMainActivity extends AppCompatActivity {
         ImageView imageView = new ImageView(this);
         imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         main_li.addView(imageView);
-        Glide.with(this).load("http://pic22.nipic.com/20120714/9622064_105642209176_2.jpg")
+        MyGlide.with(this).load("http://pic22.nipic.com/20120714/9622064_105642209176_2.jpg")
                 .loading(R.drawable.length).listener(new RequestListener() {
             @Override
             public boolean onException() {

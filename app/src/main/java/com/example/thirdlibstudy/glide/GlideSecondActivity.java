@@ -16,11 +16,9 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.glide.Glide;
+import com.example.glide.MyGlide;
 import com.example.glide.listener.RequestListener;
 import com.example.thirdlibstudy.R;
-
-import java.io.IOException;
 
 public class GlideSecondActivity extends AppCompatActivity {
 
@@ -92,7 +90,7 @@ public class GlideSecondActivity extends AppCompatActivity {
         ImageView imageView = new ImageView(this);
         imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         second_li.addView(imageView);
-        Glide.with(GlideSecondActivity.this).load("http://lorempixel.com/1600/900/",count++)
+        MyGlide.with(GlideSecondActivity.this).load("http://lorempixel.com/1600/900/",count++)
                 .loading(R.drawable.length).listener(new RequestListener() {
             @Override
             public boolean onException() {

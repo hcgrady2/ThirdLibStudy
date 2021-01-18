@@ -16,6 +16,7 @@ import com.example.butterknife_annotations.BindView;
 import com.example.butterknife_annotations.TestAnotation;
 import com.example.thirdlibstudy.butterknife.ButterknifeMainActivity;
 import com.example.thirdlibstudy.eventbus.EventBusOneActivity;
+import com.example.thirdlibstudy.glide.GlideLoadImgMain;
 import com.example.thirdlibstudy.glide.GlideMainActivity;
 import com.example.thirdlibstudy.okhttpdownload.DownloadCallback;
 import com.example.thirdlibstudy.okhttpdownload.DownloadFacade;
@@ -55,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
     Button btnMultiThreadDown;
 
 
+    @BindView(R.id.btn_glide_load)
+    Button btnLoadImg;
+
     Unbinder unbinder;
 
     @Override
@@ -91,6 +95,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, GlideMainActivity.class));
 
+            }
+        });
+
+        btnLoadImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("GlideLoadImgMain", "onClick: ");
+                startActivity(new Intent(MainActivity.this, GlideLoadImgMain.class));
             }
         });
         btnRetrofit.setOnClickListener(new View.OnClickListener() {

@@ -10,7 +10,7 @@ import com.example.glide.requset.BitmapRequest;
 /**
  *  对外提供 with 方法，返回一个 BitmapRequest 对象。
  */
-public class Glide {
+public class MyGlide {
     public static BitmapRequest with(Activity activity){
 
         //不能每加载一个图片就绑定一个
