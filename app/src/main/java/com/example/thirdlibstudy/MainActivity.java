@@ -21,6 +21,7 @@ import com.example.thirdlibstudy.glide.GlideMainActivity;
 import com.example.thirdlibstudy.okhttpdownload.DownloadCallback;
 import com.example.thirdlibstudy.okhttpdownload.DownloadFacade;
 import com.example.thirdlibstudy.retrofit.RetrofitMainActivity;
+import com.example.thirdlibstudy.rxjavademo.RxJavaMain;
 import com.hc.butterknife.ButterKnife;
 import com.hc.butterknife.Unbinder;
 import com.hc.myokhttp.Call;
@@ -58,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.btn_glide_load)
     Button btnLoadImg;
+
+    @BindView(R.id.btn_rxjava2_demo)
+    Button btnRxjava;
 
     Unbinder unbinder;
 
@@ -114,7 +118,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+        btnRxjava.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RxJavaMain.class));
+            }
+        });
 
         btnOkhttp.setOnClickListener(new View.OnClickListener() {
             @Override

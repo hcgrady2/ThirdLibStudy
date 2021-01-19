@@ -43,7 +43,7 @@
         <activity android:name=".glide.GlideSecondActivity"/>
         <activity android:name=".retrofit.RetrofitMainActivity"/>
         <activity android:name=".glide.GlideLoadImgMain"/>
-
+        <activity android:name=".rxjavademo.RxJavaMain"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"
