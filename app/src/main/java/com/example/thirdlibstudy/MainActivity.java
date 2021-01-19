@@ -1,8 +1,5 @@
 package com.example.thirdlibstudy;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -12,8 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+
 import com.example.butterknife_annotations.BindView;
-import com.example.butterknife_annotations.TestAnotation;
 import com.example.thirdlibstudy.butterknife.ButterknifeMainActivity;
 import com.example.thirdlibstudy.eventbus.EventBusOneActivity;
 import com.example.thirdlibstudy.glide.GlideLoadImgMain;
@@ -21,7 +20,7 @@ import com.example.thirdlibstudy.glide.GlideMainActivity;
 import com.example.thirdlibstudy.okhttpdownload.DownloadCallback;
 import com.example.thirdlibstudy.okhttpdownload.DownloadFacade;
 import com.example.thirdlibstudy.retrofit.RetrofitMainActivity;
-import com.example.thirdlibstudy.rxjavademo.RxJavaMain;
+import com.example.thirdlibstudy.rxjavademo.module.HomeActivity;
 import com.hc.butterknife.ButterKnife;
 import com.hc.butterknife.Unbinder;
 import com.hc.myokhttp.Call;
@@ -121,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         btnRxjava.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, RxJavaMain.class));
+                startActivity(new Intent(MainActivity.this, HomeActivity.class));
             }
         });
 
