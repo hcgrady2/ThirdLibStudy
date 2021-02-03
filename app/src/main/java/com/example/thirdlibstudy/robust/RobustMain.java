@@ -1,35 +1,95 @@
 package com.example.thirdlibstudy.robust;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.thirdlibstudy.R;
+import com.meituan.robust.PatchExecutor;
 
 public class RobustMain extends AppCompatActivity {
 
 
-    Button btnBug;
+    TextView textView;
+    Button button;
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_robust_main);
 
-
-        btnBug = findViewById(R.id.bnt_bug_click);
-
-
-        btnBug.setOnClickListener(new View.OnClickListener() {
+        button = (Button) findViewById(R.id.button);
+        textView = (TextView) findViewById(R.id.textView);
+        Button patch = (Button) findViewById(R.id.patch);
+        //beigin to patch
+        patch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(RobustMain.this,"这里有 Bug",Toast.LENGTH_SHORT).show();
+                if (isGrantSDCardReadPermission()) {
+                    runRobust();
+                } else {
+                    requestPermission();
+                }
             }
         });
+
+        findViewById(R.id.jump_second_activity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RobustMain.this, SecondActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(RobustMain.this, "arrived in ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
+
+    private boolean isGrantSDCardReadPermission() {
+        return PermissionUtils.isGrantSDCardReadPermission(this);
+    }
+
+    private void requestPermission() {
+        PermissionUtils.requestSDCardReadPermission(this, REQUEST_CODE_SDCARD_READ);
+    }
+
+    private static final int REQUEST_CODE_SDCARD_READ = 1;
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_SDCARD_READ:
+                handlePermissionResult();
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void handlePermissionResult() {
+        if (isGrantSDCardReadPermission()) {
+            runRobust();
+        } else {
+            Toast.makeText(this, "failure because without sd card read permission", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void runRobust() {
+        new PatchExecutor(getApplicationContext(), new PatchManipulateImp(), new RobustCallBackSample()).start();
+    }
+
+
 }
