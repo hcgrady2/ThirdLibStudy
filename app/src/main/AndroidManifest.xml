@@ -173,7 +173,8 @@
         <activity android:name=".rxjavademo.module.rxjava2.Thread.RxThreadActivity"/>
 
         
-        
+
+        <activity android:name=".robust.RobustMain"/>
 
 
         <provider

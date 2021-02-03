@@ -20,6 +20,7 @@ import com.example.thirdlibstudy.glide.GlideMainActivity;
 import com.example.thirdlibstudy.okhttpdownload.DownloadCallback;
 import com.example.thirdlibstudy.okhttpdownload.DownloadFacade;
 import com.example.thirdlibstudy.retrofit.RetrofitMainActivity;
+import com.example.thirdlibstudy.robust.RobustMain;
 import com.example.thirdlibstudy.rxjavademo.module.HomeActivity;
 import com.hc.butterknife.ButterKnife;
 import com.hc.butterknife.Unbinder;
@@ -61,6 +62,13 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.btn_rxjava2_demo)
     Button btnRxjava;
+
+
+
+
+    @BindView(R.id.btn_robust_demo)
+    Button btnRobust;
+
 
     Unbinder unbinder;
 
@@ -123,6 +131,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, HomeActivity.class));
             }
         });
+
+
+
 
         btnOkhttp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -228,6 +239,20 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+
+
+        btnRobust.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RobustMain.class));
+
+            }
+        });
+
+
 
     }
 
