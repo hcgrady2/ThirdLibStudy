@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.thirdlibstudy.R;
-import com.meituan.robust.patch.annotaion.Add;
 
 import java.lang.reflect.Field;
 
@@ -24,6 +23,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     protected static String name = "SecondActivity";
     private ListView listView;
     private String[] multiArr = {"列表1", "列表2", "列表3", "列表4"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,17 +45,17 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         printLog("robust", new String[][]{new String[]{"1", "2", "3"}, new String[]{"4", "5", "6"}});
     }
 
-//    @Modify
+   // @Modify
     public String getTextInfo() {
-        getArray();
+       // getArray();
         return "error occur " ;
-//        return "error fixed";
+        //return "error fixed";
     }
 
-    @Add
-    public String[] getArray() {
-       return new String[]{"hello","world"};
-    }
+//    @Add
+//    public String[] getArray() {
+//       return new String[]{"hello","world"};
+//    }
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
