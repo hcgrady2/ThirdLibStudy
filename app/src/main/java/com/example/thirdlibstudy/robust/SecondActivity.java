@@ -24,6 +24,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private ListView listView;
     private String[] multiArr = {"列表1", "列表2", "列表3", "列表4"};
 
+    //@Modify
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,14 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         listView.setAdapter(adapter);
         printLog("robust", new String[][]{new String[]{"1", "2", "3"}, new String[]{"4", "5", "6"}});
     }
+
+
+//    @Add
+//    private String getNewContent() {
+//        return "hello my robust";
+//    }
+//
+
 
    // @Modify
     public String getTextInfo() {
