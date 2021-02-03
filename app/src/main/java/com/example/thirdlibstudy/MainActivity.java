@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
-import com.example.butterknife_annotations.BindView;
 import com.example.thirdlibstudy.butterknife.ButterknifeMainActivity;
 import com.example.thirdlibstudy.eventbus.EventBusOneActivity;
 import com.example.thirdlibstudy.glide.GlideLoadImgMain;
@@ -46,27 +45,11 @@ public class MainActivity extends AppCompatActivity {
     Button btnEventBus;
     Button btnGlide;
 
-    @BindView(R.id.btn_okhttp_demo)
     Button btnOkhttp;
-
-    @BindView(R.id.btn_retrofit_demo)
     Button btnRetrofit;
-
-
-    @BindView(R.id.btn_okhttp_download)
     Button btnMultiThreadDown;
-
-
-    @BindView(R.id.btn_glide_load)
     Button btnLoadImg;
-
-    @BindView(R.id.btn_rxjava2_demo)
     Button btnRxjava;
-
-
-
-
-    @BindView(R.id.btn_robust_demo)
     Button btnRobust;
 
 
@@ -83,6 +66,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         btnButterKnife = findViewById(R.id.btn_butter_knife);
+        btnOkhttp = findViewById(R.id.btn_okhttp_demo);
+        btnRetrofit = findViewById(R.id.btn_retrofit_demo);
+        btnMultiThreadDown = findViewById(R.id.btn_okhttp_download);
+        btnLoadImg = findViewById(R.id.btn_glide_load);
+        btnRxjava = findViewById(R.id.btn_rxjava2_demo);
+        btnRobust = findViewById(R.id.btn_robust_demo);
+
+
+
+
+
         btnButterKnife.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
