@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.thirdlibstudy.R;
+import com.meituan.robust.patch.annotaion.Add;
+import com.meituan.robust.patch.annotaion.Modify;
 
 import java.lang.reflect.Field;
 
@@ -24,7 +26,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private ListView listView;
     private String[] multiArr = {"列表1", "列表2", "列表3", "列表4"};
 
-    //@Modify
+    @Modify
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +34,13 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
         listView = (ListView) findViewById(R.id.listview);
         TextView textView = (TextView) findViewById(R.id.secondtext);
-        textView.setOnClickListener(v -> {
-//                    RobustModify.modify();
-                    Log.d("robust", " onclick  in Listener");
-                }
-        );
+//        textView.setOnClickListener(v -> {
+////                    RobustModify.modify();
+//                    Log.d("robust", " onclick  in Listener");
+//                }
+//        );
         //change text on the  SecondActivity
-        textView.setText(getTextInfo());
+        textView.setText(getNewContent());
 
         //test array
         BaseAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1, multiArr);
@@ -47,11 +49,11 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
-//    @Add
-//    private String getNewContent() {
-//        return "hello my robust";
-//    }
-//
+    @Add
+    private String getNewContent() {
+        return "hello my robust";
+    }
+
 
 
    // @Modify
