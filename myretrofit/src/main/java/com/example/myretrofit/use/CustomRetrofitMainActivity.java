@@ -12,6 +12,11 @@ import com.example.myretrofit.core.Callback;
 
 public class CustomRetrofitMainActivity extends AppCompatActivity {
 
+    String query = "Android";
+    public   String IN_QUALIFIER = "in:name,description";
+
+    String apiQuery = query + IN_QUALIFIER;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,15 +28,19 @@ public class CustomRetrofitMainActivity extends AppCompatActivity {
 
     public void netRequest(View view) {
 
-        RetrofitClient.getServiceApi().userLogin("Darren", "940223")
-                .enqueue(new Callback<UserLoginResult>() {
+        RetrofitClient.getServiceApi()
+                .searchRepos(apiQuery, 0, 10)
+                .enqueue(new Callback<Response>() {
                     @Override
-                    public void onResponse(Call<UserLoginResult> call, Response<UserLoginResult> response) {
-                        Log.e("hcTag",response.body.toString());
+                    public void onResponse(Call<Response> call, Response<Response> response) {
+
+
                     }
 
                     @Override
-                    public void onFailure(Call<UserLoginResult> call, Throwable t) {
+                    public void onFailure(Call<Response> call, Throwable t) {
+                        Log.i("hcTag", "onResponse: ");
+
 
                     }
                 });

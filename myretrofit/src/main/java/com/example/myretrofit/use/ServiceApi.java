@@ -21,5 +21,12 @@ public interface ServiceApi {
 
     // POST
 
-    // 上传文件怎么用？
+    @GET("search/repositories?sort=stars")
+    Call<Response> searchRepos(
+            @Query("q") String query,
+            @Query("page") int page,
+            @Query("per_page") int itemsPerPage
+    );
+
+
 }
