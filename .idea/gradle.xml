@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/glide" />
             <option value="$PROJECT_DIR$/myeventbus" />
             <option value="$PROJECT_DIR$/myokhttp" />
+            <option value="$PROJECT_DIR$/myretrofit" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

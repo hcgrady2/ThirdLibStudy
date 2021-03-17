@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import com.example.myretrofit.use.CustomRetrofitMainActivity;
 import com.example.thirdlibstudy.butterknife.ButterknifeMainActivity;
 import com.example.thirdlibstudy.eventbus.EventBusOneActivity;
 import com.example.thirdlibstudy.glide.GlideLoadImgMain;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnRobust;
 
 
+    Button btnMyRetrofit;
     Unbinder unbinder;
 
     @Override
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        btnMyRetrofit = findViewById(R.id.btn_retrofit_main);
 
 
         btnButterKnife.setOnClickListener(new View.OnClickListener() {
@@ -243,6 +246,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, RobustMain.class));
 
+            }
+        });
+
+
+        btnMyRetrofit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, 
+                        CustomRetrofitMainActivity.class));
             }
         });
 

@@ -188,6 +188,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <activity android:name="com.example.myretrofit.use.CustomRetrofitMainActivity"/>
 
     </application>
 
